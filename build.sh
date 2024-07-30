@@ -8,6 +8,8 @@ cd gold/
 sudo git clone https://github.com/Hari0o/Gold_Site_Ecommerce.git
 cd Gold_Site_Ecommerce/
 git_commit=$(sudo git rev-parse HEAD)
+sudo npm install react-scripts
+sudo npm run build
 sudo docker build -t react-nginx:$git_commit -f golddockerfile .
 sudo docker tag react-nginx:$git_commit sagarkakkala385/react-nginx:$git_commit ##make sure you did docker login
 sudo docker push sagarkakkala385/react-nginx:$git_commit
