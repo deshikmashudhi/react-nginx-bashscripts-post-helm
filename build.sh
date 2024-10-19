@@ -17,11 +17,11 @@ aws s3 cp --recursive build "s3://buildartifactoryreactdemo/${current_date}/$(ba
 sudo docker build -t react-nginx:$git_commit -f golddockerfile .
 sudo docker tag react-nginx:$git_commit sagarkakkala385/react-nginx:$git_commit ##make sure you did docker login
 sudo docker push sagarkakkala385/react-nginx:$git_commit
-aws s3 rm s3://gitcommitids/new_value.txt
+aws s3 rm s3://gitcommitidsreactdemo/new_value.txt
 sudo touch new_value.txt
 sudo chmod 777 new_value.txt
 sudo echo $git_commit > new_value.txt
-aws s3 cp new_value.txt s3://gitcommitids/
+aws s3 cp new_value.txt s3://gitcommitidsreactdemo/
 sudo rm new_value.txt
 
 
