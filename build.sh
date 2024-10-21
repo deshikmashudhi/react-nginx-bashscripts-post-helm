@@ -18,6 +18,7 @@ sudo docker build -t react-nginx:$git_commit -f golddockerfile .
 sudo docker tag react-nginx:$git_commit sagarkakkala385/react-nginx:$git_commit ##make sure you did docker login
 trivy image sagarkakkala385/react-nginx > image_vulnerability.txt
 echo "Please find the attached Trivy file file." | mutt -s "Image Vulnerability" -a image_vulnerability.txt -- sagar.kakkala@gmail.com
+/home/ubuntu/slack_bash.sh
 sudo docker push sagarkakkala385/react-nginx:$git_commit
 aws s3 rm s3://gitcommitidsreactdemo/new_value.txt
 sudo touch new_value.txt
