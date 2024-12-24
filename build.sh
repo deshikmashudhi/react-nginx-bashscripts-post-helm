@@ -13,13 +13,13 @@ sudo npm run build
 sudo chmod 777 build
 current_date=$(date +%d%m%Y)
 aws s3api put-object --bucket buildartifactoryreactjsdemo --key "${current_date}/"
-aws s3 cp --recursive build "s3://buildartifactoryreactdemo/${current_date}/$(basename build)"
+aws s3 cp --recursive build "s3://buildartifactoryreactjsdemo/${current_date}/$(basename build)"
 sudo docker build -t react-nginx:$git_commit -f golddockerfile .
-sudo docker tag react-nginx:$git_commit sagarkakkala385/react-nginx:$git_commit ##make sure you did docker login
+sudo docker tag react-nginx:$git_commit mashudhideshik/react-nginx:$git_commit ##make sure you did docker login
 sudo touch image_vulnerability.txt
 sudo chmod 777 image_vulnerability.txt
-trivy image sagarkakkala385/react-nginx > image_vulnerability.txt
-echo "Please find the attached Trivy file file." | mutt -s "Image Vulnerability" -a image_vulnerability.txt -- sagar.kakkala@gmail.com
+trivy image mashudhideshik/react-nginx > image_vulnerability.txt
+echo "Please find the attached Trivy file file." | mutt -s "Image Vulnerability" -a image_vulnerability.txt -- deshikmashudhi@gmail.com
 /home/ubuntu/slack_bash.sh
 sudo docker push sagarkakkala385/react-nginx:$git_commit
 aws s3 rm s3://gitcommitidsreactdemo/new_value.txt
@@ -36,5 +36,5 @@ sudo rm image_vulnerability.txt
 #cd gold/Gold_Site_Ecommerce
 #sudo git pull
 #sudo docker build -t react-nginx -f goldockerfile .
-#sudo docker tag react-nginx:latest sagarkakkala385/react-nginx:latest ##make sure you did docker login
-#sudo docker push sagarkakkala385/react-nginx:latest
+#sudo docker tag react-nginx:latest mashudhideshik/react-nginx:latest ##make sure you did docker login
+#sudo docker push mashudhideshik/react-nginx:latest
