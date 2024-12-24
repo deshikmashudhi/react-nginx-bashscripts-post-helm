@@ -1,4 +1,3 @@
-
 #!/bin/bash
 sudo docker container prune -f && sudo docker image prune -a -f && sudo docker volume prune -f && sudo docker network prune -f && sudo docker system prune -a -f
 ##this above step is not recommned step, i am deleting existing images to save space
@@ -16,7 +15,7 @@ aws s3api put-object --bucket buildartifactoryreactjsdemo --key "${current_date}
 aws s3 cp --recursive build "s3://buildartifactoryreactjsdemo/${current_date}/$(basename build)"
 sudo docker build -t react-nginx:$git_commit -f golddockerfile .
 sudo docker tag react-nginx:$git_commit mashudhideshik/react-nginx:$git_commit ##make sure you did docker login
-aws s3 rm s3://gitcommitidsreactdemo/new_value.txt
+aws s3 rm s3://gitcommitids2/new_value.txt
 sudo touch new_value.txt
 sudo chmod 777 new_value.txt
 sudo echo $git_commit > new_value.txt
